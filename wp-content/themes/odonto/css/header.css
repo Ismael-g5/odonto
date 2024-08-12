@@ -92,3 +92,17 @@ main {
     margin-right: 2rem; }
 .site-header-main nav #menu-principal li:last-child {
     margin-right: 0; }
+.btn-appointment{
+    font-size: 16px;
+    color: white;
+    background: #13297e;
+    border: 1px solid var(--medi-primary-color);
+    padding: 12px 32px;
+    border-radius: 4px;
+    transition: all .3s linear;
+    text-align: center;
+    display: inline-block;
+    width: -moz-fit-content;
+    width: fit-content;
+    line-height: 25.6px;
+}
