@@ -61,6 +61,18 @@ function odonto_registrando_post_customizado_banner(){
 }
 add_action('init','odonto_registrando_post_customizado_banner');
 
+function odonto_registrando_post_informacoes(){
+    register_post_type('cabecalho', array(
+        'labels' => array('name' => 'Cabeçalho(Informações)'),
+        'public' => true,
+        'menu_positon' => 3,
+        'supports' => array('title', 'editor', 'thumbnail'),
+        'menu_icon' => 'dashicons-admin-site'
+    ));
+    
+}
+add_action('init', 'odonto_registrando_post_informacoes');
+
 function odonto_registrando_metabox(){
     add_meta_box(
         'ai_registrando_metabox',
