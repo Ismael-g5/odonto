@@ -61,6 +61,59 @@ function odonto_registrando_post_customizado_banner(){
 }
 add_action('init','odonto_registrando_post_customizado_banner');
 
+// post customizado sobre nos
+function odonto_registrando_post_customizado_sobrenos(){
+    register_post_type(
+        'sobre_nos',
+        array(
+          'labels' => array('name' => 'Sobre Nós'),
+          'public' => true,
+          'menu_position' => 4,
+          'menu_icon' => 'dashicons-format-image',
+          'supports'=> array('title','editor', 'thumbnail')
+        )
+    );
+}
+add_action('init','odonto_registrando_post_customizado_sobrenos');
+
+//Meta Box para segundo texto do Bloco 2
+function odonto_registrando_metabox_block2() {
+    add_meta_box(
+        'ai_registrando_metabox_block2', 
+        'Segundo Texto',                 
+        'ai_funcao_callback_block2',     
+        'sobre_nos'                       
+    );
+}
+add_action('add_meta_boxes', 'odonto_registrando_metabox_block2');
+
+// Função de callback para exibir o conteúdo do metabox
+function ai_funcao_callback_block2($post) {
+    $texto_home_1 = get_post_meta($post->ID, '_texto_block_2', true);
+    ?>
+    <label for="texto_block_2">Texto 2</label>
+    <textarea name="texto_block_2" style="width: 100%; height: 150px;"><?php echo esc_textarea($texto_home_1); ?></textarea>
+    <?php
+}
+
+// Função para salvar o valor do metabox
+function odonto_salvando_dados_metabox_block2($post_id) {
+
+    if (!current_user_can('edit_post', $post_id)) {
+        return;
+    }
+
+    if (isset($_POST['texto_block_2'])) {
+        update_post_meta($post_id, '_texto_block_2', sanitize_textarea_field($_POST['texto_block_2']));
+    }
+}
+add_action('save_post', 'odonto_salvando_dados_metabox_block2');
+
+
+//Fim do Meta Box
+
+
+
 function odonto_registrando_post_informacoes(){
     register_post_type('cabecalho', array(
         'labels' => array('name' => 'Cabeçalho(Informações)'),

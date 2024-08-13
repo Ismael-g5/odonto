@@ -1,0 +1,19 @@
+.title-second-health {
+    padding-bottom: 16px;
+    position: relative;
+    font-size: 38px;
+    font-weight: 700;
+    line-height: 160%;
+}
+.title-second-health::after {
+    content: "";
+    position: absolute;
+    top: 85%;
+    left: 10%;
+    width: 100px;
+    height: 6px;
+    background-image: linear-gradient(90deg, #178cef 0, #349bef 26.56%, #76b9f0 55.21%, #8fc5f1 80.21%, #b0d6f5 100%);
+    transform: translateX(-50%);
+}
+
+
