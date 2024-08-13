@@ -113,6 +113,94 @@ add_action('save_post', 'odonto_salvando_dados_metabox_block2');
 //Fim do Meta Box
 
 
+// Meta Box para ícones do Bloco 2
+function odonto_registrando_metabox_icons_text() {
+    add_meta_box(
+        'ai_registrando_metabox_icons_text',
+        'Ícones e Textos',
+        'ai_funcao_callback_icons_text',
+        'sobre_nos'
+    );
+}
+add_action('add_meta_boxes', 'odonto_registrando_metabox_icons_text');
+
+function ai_funcao_callback_icons_text($post) {
+    $icons_text_data = get_post_meta($post->ID, '_icons_text_data', true) ?: [];
+    ?>
+    <div id="icons-text-container">
+        <?php foreach ($icons_text_data as $index => $data): ?>
+            <div class="icons-text-group">
+                <label for="icons_text_<?= $index ?>_icon">Ícone</label>
+                <input type="file" name="icons_text[<?= $index ?>][icon]" />
+                <?php if (!empty($data['icon'])): ?>
+                    <img src="<?= esc_url($data['icon']) ?>" style="max-width: 100px; max-height: 100px;" alt="Ícone atual" />
+                <?php endif; ?>
+
+                <label for="icons_text_<?= $index ?>_text">Texto</label>
+                <textarea name="icons_text[<?= $index ?>][text]" style="width: 100%; height: 50px;"><?= esc_textarea($data['text']) ?></textarea>
+
+                <button type="button" class="remove-icons-text">Remover</button>
+            </div>
+        <?php endforeach; ?>
+    </div>
+    <button type="button" id="add-icons-text">Adicionar Ícone e Texto</button>
+
+    <script>
+        (function($){
+            let index = <?= count($icons_text_data) ?>;
+
+            $('#add-icons-text').click(function(){
+                $('#icons-text-container').append(`
+                    <div class="icons-text-group">
+                        <label for="icons_text_${index}_icon">Ícone</label>
+                        <input type="file" name="icons_text[${index}][icon]" />
+
+                        <label for="icons_text_${index}_text">Texto</label>
+                        <textarea name="icons_text[${index}][text]" style="width: 100%; height: 50px;"></textarea>
+
+                        <button type="button" class="remove-icons-text">Remover</button>
+                    </div>
+                `);
+                index++;
+            });
+
+            $('#icons-text-container').on('click', '.remove-icons-text', function(){
+                $(this).closest('.icons-text-group').remove();
+            });
+        })(jQuery);
+    </script>
+    <?php
+}
+
+function odonto_salvando_dados_icons_text($post_id) {
+    if (isset($_POST['icons_text']) && is_array($_POST['icons_text'])) {
+        $icons_text_data = [];
+
+        foreach ($_POST['icons_text'] as $index => $data) {
+            if (isset($_FILES['icons_text']['name'][$index]['icon']) && $_FILES['icons_text']['name'][$index]['icon']) {
+                $upload = wp_upload_bits($_FILES['icons_text']['name'][$index]['icon'], null, file_get_contents($_FILES['icons_text']['tmp_name'][$index]['icon']));
+                if (!$upload['error']) {
+                    $data['icon'] = $upload['url'];
+                }
+            } else {
+                $data['icon'] = sanitize_text_field($data['icon']);
+            }
+
+            $icons_text_data[] = [
+                'icon' => esc_url_raw($data['icon']),
+                'text' => sanitize_textarea_field($data['text']),
+            ];
+        }
+
+        update_post_meta($post_id, '_icons_text_data', $icons_text_data);
+    } else {
+        delete_post_meta($post_id, '_icons_text_data');
+    }
+}
+add_action('save_post', 'odonto_salvando_dados_icons_text');
+
+
+
 
 function odonto_registrando_post_informacoes(){
     register_post_type('cabecalho', array(

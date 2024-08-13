@@ -43,7 +43,7 @@ endif;
 
                     $post_id = get_the_ID();
                     $texto_block_2 = get_post_meta($post_id, '_texto_block_2', true);
-
+                    $icons_text_data = get_post_meta($post_id, '_icons_text_data', true);
             ?>
                     <span class="center-title" style="color: #13297E; font-weight: 700; text-align: left;"><?php the_title(); ?></span>
                     <article class="center-title-con">
@@ -51,8 +51,26 @@ endif;
                             <?php the_content(); ?>
                         </h2>
                     </article>
-                    <div>
+                    <div class="about-desc">
                         <?php echo esc_html($texto_block_2); ?>
+                    </div>
+                    <hr class="line-separation mt-5">
+                    <div class="icons-about-us d-flex">
+                        <?php
+                        if (!empty($icons_text_data)) {
+                            foreach ($icons_text_data as $item) {
+                                ?>
+                                <div class="icon-text-item">
+                                    <?
+                                    $teste = $item['icon'];
+                                    print_r($teste);?>
+                                    <img src="<?php echo esc_url($item['icon']); ?>" alt="Ícone" style="max-width: 50px; max-height: 50px; margin-right: 10px;">
+                                    <p><?php echo esc_html($item['text']); ?></p>
+                                </div>
+                                <?php
+                            }
+                        }
+                        ?>
                     </div>
             <?php
                 endwhile;
@@ -61,7 +79,7 @@ endif;
 
         </div>
         <div class="col-md-6 text-center">
-            teste 2
+            <img width="400" height="500" src="<?php the_post_thumbnail_url();?>">
         </div>
     </div>
 </div>
