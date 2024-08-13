@@ -11,11 +11,11 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
-    <link rel="stylesheet" href="<?= get_template_directory_uri() . '/css/normalize.css' ?>">
-    <link rel="stylesheet" href="<?= get_template_directory_uri() . '/css/bootstrap.css' ?>">
-    <link rel="stylesheet" href="<?= get_template_directory_uri() . '/css/header.css' ?>">
-    <link rel="stylesheet" href="<?= get_template_directory_uri() . '/css/' . $estiloPagina ?>">
-    <link rel="stylesheet" href="<?= get_template_directory_uri() . '/css/footer.css' ?>">
+    <link rel="stylesheet" href="<?= get_template_directory_uri() . '/assets/css/normalize.css' ?>">
+    <link rel="stylesheet" href="<?= get_template_directory_uri() . '/assets/css/bootstrap.css' ?>">
+    <link rel="stylesheet" href="<?= get_template_directory_uri() . '/assets/css/header.css' ?>">
+    <link rel="stylesheet" href="<?= get_template_directory_uri() . '/assets/css/' . $estiloPagina ?>">
+    <link rel="stylesheet" href="<?= get_template_directory_uri() . '/assets/css/footer.css' ?>">
 
 
 </head>
@@ -54,8 +54,40 @@
                 endif;
                 ?>
             </div>
+            <?php
+            $urlTemplate =  esc_url( get_template_directory_uri() );
+            ?>
+            <div class="icon-socials" style="gap: 20px;">
+                <div class="icon-whatsapp">
+                    <?php
+                    echo '<img  src="' . $urlTemplate . '/assets/images/icon-whz.png">';
+                    ?>
+            </div>
+            <div class="icon-instagram">
+                   <a href="#">
+                   <?php
+                    echo '<img  src="' . $urlTemplate . '/assets/images/icon-instagram.png">';
+                    ?>
+                    </a>
+            </div>
+            <div class="icon-linkedIn">
+            <a href="#">
+                  <?php
+                    echo '<img  src="' . $urlTemplate . '/assets/images/icon-lkn.png">';
+                    ?>
+                    </a>
+            </div>
+            <div class="icon-facebook">
+            <a href="#">
+                    <?php
+                    echo '<img  src="' . $urlTemplate . '/assets/images/icon-facebook.png">';
+                    ?>
+                    </a>
+            </div>
+        </div>
             </nav>
         </div>
+        
     </header>
 
 

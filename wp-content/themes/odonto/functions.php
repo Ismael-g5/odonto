@@ -137,8 +137,8 @@ function odonto_adicionando_scripts()
     $textosBanner = pegandoTextosParaBanner();
 
     if (is_front_page()) {
-        wp_enqueue_script('typed-js', get_template_directory_uri() . '/js/typed.min.js', array(), false, true);
-        wp_enqueue_script('texto-banner-js', get_template_directory_uri() . '/js/texto-banner.js', array('typed-js'), false, true);
+        wp_enqueue_script('typed-js', get_template_directory_uri() . '/assets/js/typed.min.js', array(), false, true);
+        wp_enqueue_script('texto-banner-js', get_template_directory_uri() . '/assets/js/texto-banner.js', array('typed-js'), false, true);
         wp_localize_script('texto-banner-js', 'data', $textosBanner);
     }
 }
