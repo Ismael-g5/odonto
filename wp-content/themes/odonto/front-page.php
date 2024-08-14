@@ -55,22 +55,36 @@ endif;
                         <?php echo esc_html($texto_block_2); ?>
                     </div>
                     <hr class="line-separation mt-5">
-                    <div class="icons-about-us d-flex">
+
+                    <div class="icon_1">
+
                         <?php
-                        if (!empty($icons_text_data)) {
-                            foreach ($icons_text_data as $item) {
-                                ?>
-                                <div class="icon-text-item">
-                                    <?
-                                    $teste = $item['icon'];
-                                    print_r($teste);?>
-                                    <img src="<?php echo esc_url($item['icon']); ?>" alt="Ícone" style="max-width: 50px; max-height: 50px; margin-right: 10px;">
-                                    <p><?php echo esc_html($item['text']); ?></p>
+                        // Recupera o grupo de campos 'icones_texto'
+                        $icones_texto = get_field('icones_texto');
+
+                        if ($icones_texto) {
+                            // Suponha que $icones_texto seja um array com vários grupos
+                            foreach ($icones_texto as $item) {
+                                $icone_url = $item['icone']['url']; // Subcampo 'icone', acessando a URL da imagem
+                                $texto = $item['texto']; // Subcampo 'texto'
+
+                                // Exibir os dados
+                        ?>
+                                <div class="icone-texto-item">
+                                    <?php if (!empty($icone_url)): ?>
+                                        <img src="<?php echo esc_url($icone_url); ?>" alt="Ícone">
+                                    <?php endif; ?>
+                                    <p><?php echo esc_html($texto); ?></p>
                                 </div>
-                                <?php
+                        <?php
                             }
+                        } else {
+                            echo 'Nenhum ícone e texto encontrado.';
                         }
                         ?>
+
+
+
                     </div>
             <?php
                 endwhile;
@@ -79,7 +93,7 @@ endif;
 
         </div>
         <div class="col-md-6 text-center">
-            <img width="400" height="500" src="<?php the_post_thumbnail_url();?>">
+            <img width="400" height="500" src="<?php the_post_thumbnail_url(); ?>">
         </div>
     </div>
 </div>
