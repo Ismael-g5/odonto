@@ -21,3 +21,52 @@
     color: #606060;
     margin-bottom: 32px;
 }
+
+/* serviços */
+.formulario-pesquisa-servicos {
+    margin-top: 3rem;
+    margin-left: 10%;
+    padding-left: 15px; }
+.formulario-pesquisa-servicos input {
+    background-color: #b9b6d6;
+    color: #FFF;
+    padding: 5px;
+    border-radius: 3px; }
+
+.page-servicos li {
+    -webkit-box-sizing: content-box;
+    box-sizing: content-box;
+    border: 1px solid #9996C3;
+    margin: 15px;
+    padding: 15px;
+    position: relative; }
+
+.page-servicos a {
+    position: absolute;
+    top: 15px;
+    padding: 5px;
+    color: #FFF;
+    background-color: #7976b0; }
+
+.page-servicos img {
+    width: 100%;
+    height: 30vh; }
+
+.page-servicos .row {
+    margin: auto;
+    padding: auto; }
+
+.page-servicos .lista-servicos {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin: 0 10%; }
+
+.page-servicos .titulo-servicos {
+    font-weight: 600; }
+
+.lista-servicos {
+    margin-bottom: 4rem !important;
+}
