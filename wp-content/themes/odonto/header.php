@@ -161,8 +161,8 @@
                         while ($query->have_posts()): $query->the_post();
                         ?>
                             <div class="itens-information d-flex" >
-                                <div>
-                                    <img style="background-color: blue;" class="icon-content round" width="30" height="30" src="<?php the_post_thumbnail_url() ?>">
+                                <div class="image-menu-mobile" style="width: 50px; height: 50px; background-color: blue;">
+                                    <img  class="icon-content round" width="20" height="30" src="<?php the_post_thumbnail_url() ?>">
                                 </div>
                                 <div>
                                     <?php
