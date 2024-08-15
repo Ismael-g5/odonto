@@ -2,6 +2,8 @@
 $estiloPagina = 'home.css';
 require_once 'header.php';
 
+
+
 $args = array(
     'post_type' => 'banners',
     'post_status' => 'publish',
@@ -13,7 +15,7 @@ if ($query->have_posts()):
     while ($query->have_posts()): $query->the_post();
     ?>
     <main>
-        <div class="imagem-banner">
+        <div class="imagem-banner img-fluid">
             <img class="img-banner-home" style="height: 80vh; width: 100%;" src="<?php the_post_thumbnail_url(); ?>">
         </div>
         <div class="texto-banner-dinamico">

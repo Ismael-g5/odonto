@@ -21,7 +21,7 @@
 </head>
 
 <body <?php body_class(); ?>>
-    <header class="site-header informations">
+    <header class="site-header informations d-none d-sm-block">
         <div class="container-odonto">
             <div style="gap: 50px;">
                 <?php
@@ -42,52 +42,52 @@
                     while ($query->have_posts()): $query->the_post();
                     ?>
                         <div class="itens-information" style="color: white; gap: 5px;">
-                            <img class="icon-content" width="20" height="20" src="<?php the_post_thumbnail_url()?>">
-                      <div class="content-itens mt-3">
-                      <?php
-                        the_content();
-                        ?>
-                       </div>
-                    </div>
+                            <img class="icon-content" width="20" height="20" src="<?php the_post_thumbnail_url() ?>">
+                            <div class="content-itens mt-3">
+                                <?php
+                                the_content();
+                                ?>
+                            </div>
+                        </div>
                 <?php
                     endwhile;
                 endif;
                 ?>
             </div>
             <?php
-            $urlTemplate =  esc_url( get_template_directory_uri() );
+            $urlTemplate =  esc_url(get_template_directory_uri());
             ?>
             <div class="icon-socials" style="gap: 20px;">
                 <div class="icon-whatsapp">
                     <?php
                     echo '<img  src="' . $urlTemplate . '/assets/images/icon-whz.png">';
                     ?>
-            </div>
-            <div class="icon-instagram">
-                   <a href="#">
-                   <?php
-                    echo '<img  src="' . $urlTemplate . '/assets/images/icon-instagram.png">';
-                    ?>
+                </div>
+                <div class="icon-instagram">
+                    <a href="#">
+                        <?php
+                        echo '<img  src="' . $urlTemplate . '/assets/images/icon-instagram.png">';
+                        ?>
                     </a>
-            </div>
-            <div class="icon-linkedIn">
-            <a href="#">
-                  <?php
-                    echo '<img  src="' . $urlTemplate . '/assets/images/icon-lkn.png">';
-                    ?>
+                </div>
+                <div class="icon-linkedIn">
+                    <a href="#">
+                        <?php
+                        echo '<img  src="' . $urlTemplate . '/assets/images/icon-lkn.png">';
+                        ?>
                     </a>
-            </div>
-            <div class="icon-facebook">
-            <a href="#">
-                    <?php
-                    echo '<img  src="' . $urlTemplate . '/assets/images/icon-facebook.png">';
-                    ?>
+                </div>
+                <div class="icon-facebook">
+                    <a href="#">
+                        <?php
+                        echo '<img  src="' . $urlTemplate . '/assets/images/icon-facebook.png">';
+                        ?>
                     </a>
+                </div>
             </div>
-        </div>
             </nav>
         </div>
-        
+
     </header>
 
 
@@ -99,18 +99,86 @@
             <?php
             the_custom_logo();
             ?>
-            <nav class="menu-main" style="margin-left: -35%;">
-                <?php
-                wp_nav_menu(
-                    array(
-                        'menu' => 'menu-navegacao',
-                        'menu_id' => 'menu-principal'
-                    )
-                );
-                ?>
-            </nav>
-            <div class="button-appointment">
-            <button type="button" class="btn btn-primary btn-appointment">Marcar Consulta</button>
+            <div class="menu-desktop d-none d-sm-block">
+                <nav class="menu-main" style="margin-left: -35%;">
+                    <?php
+                    wp_nav_menu(
+                        array(
+                            'menu' => 'menu-navegacao',
+                            'menu_id' => 'menu-principal'
+                        )
+                    );
+                    ?>
+                </nav>
             </div>
+            <div class="button-appointment d-none d-sm-block mt-5 pt-2">
+                <button type="button" class="btn btn-primary btn-appointment">Marcar Consulta</button>
+            </div>
+
+            <nav class="navbar navbar-dark d-sm-none d-block" style="background-color: white;">
+                <div class="container-fluid" style="height: 50px;">
+                    <button class="navbar-toggler" style="background-color:#13297e;" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                </div>
+            </nav>
+            </nav>
+
         </div>
+
     </header>
+
+
+    <div class="collapse" id="navbarToggleExternalContent" data-bs-theme="light">
+        <div class="bg-light p-4">
+            <div class="itens-menu-mobile text-dark d-flex">
+                <div class="menu-mobile-items">
+                    <?php
+                    wp_nav_menu(
+                        array(
+                            'menu' => 'menu-navegacao',
+                            'menu_id' => 'menu-principal'
+                        )
+                    );
+                    ?>
+                </div>
+                <div class="informations">
+                    <?php
+
+                    $args = array(
+                        'post_type' => 'cabecalho',
+                        'post_status' => 'publish',
+                        'posts_per_page' => -1,
+                        'orderby' => 'date',
+                        'order' => 'ASC'
+                    );
+
+                    $query = new WP_Query($args);
+
+                    if ($query->have_posts()): ?>
+                        <?php
+
+                        while ($query->have_posts()): $query->the_post();
+                        ?>
+                            <div class="itens-information d-flex" >
+                                <div>
+                                    <img style="background-color: blue;" class="icon-content round" width="30" height="30" src="<?php the_post_thumbnail_url() ?>">
+                                </div>
+                                <div>
+                                    <?php
+                                    the_content();
+                                    ?>
+                                </div>
+                            </div>
+
+                    <?php
+                        endwhile;
+                    endif;
+                    ?>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    </div>
+    </div>

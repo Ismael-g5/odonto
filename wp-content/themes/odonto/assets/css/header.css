@@ -106,3 +106,7 @@ main {
     width: fit-content;
     line-height: 25.6px;
 }
+
+.menu-item a{
+    color: #000 !important;
+}
