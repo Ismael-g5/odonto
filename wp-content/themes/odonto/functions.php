@@ -199,3 +199,10 @@ function pegandoTextosParaBanner()
 }
 
 add_action('wp_enqueue_scripts', 'odonto_adicionando_scripts');
+
+
+//tamanho customizado imagens card
+function odonto_custom_image_sizes() {
+    add_image_size('custom-size', 500, 700, true); // Largura 300px, altura 200px, hard crop
+}
+add_action('after_setup_theme', 'odonto_custom_image_sizes');

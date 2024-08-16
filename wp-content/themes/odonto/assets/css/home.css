@@ -70,3 +70,7 @@
 .lista-servicos {
     margin-bottom: 4rem !important;
 }
+
+.card-servicos{
+    width: 380px;
+}
