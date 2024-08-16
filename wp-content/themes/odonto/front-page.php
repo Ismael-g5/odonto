@@ -26,9 +26,9 @@ if ($query->have_posts()):
     endwhile;
 endif;
 ?>
-<div class="container">
+<div class="container mt-5">
     <div class="row services">
-        <div class="col-md-6">
+        <div class="col-md-6 content-about-us">
             <?php
             // Recupera o valor do metabox para o tipo de post 'sobre_nos'
             $argsAB = array(
@@ -62,28 +62,28 @@ endif;
                         $icones_texto = get_field('icones_texto');
                         if ($icones_texto): ?>
                             <div id="icones_texto_itens" class="row icones_itens">
-                                <div class="col-md-4 icon-text-1">
+                                <div id="content-icon-1" class="col-md-4 icon-text-1">
                                     <div class="image-icon-1 d-flex align-items-center justify-content-center">   
                                         <img src="<?php echo esc_url($icones_texto['icone_1']); ?>" alt="Icone 1" />
                                     </div>    
-                                    <div class="content texto-1 text-center">
+                                    <div id="text-icon-1" class="content texto-1 text-center">
                                         <b><?php echo esc_html($icones_texto['texto_1']); ?></b>
                                     </div>
                                 </div>
 
-                                <div class="col-md-4 icon-text-2">
+                                <div id="content-icon-2" class="col-md-4 icon-text-2">
                                     <div class="image-icon-2 d-flex align-items-center justify-content-center">    
                                         <img src="<?php echo esc_url($icones_texto['icone_2']); ?>" alt="Icone 2" />
                                     </div>    
-                                    <div class="content texto-2 text-center">
+                                    <div id="text-icon-2" class="content texto-2 text-center">
                                         <b><?php echo esc_html($icones_texto['texto_2']); ?></b>
                                     </div>
                                 </div>
-                                <div class="col-md-4 icon-text-3">
+                                <div id="content-icon-3" class="col-md-4 icon-text-3">
                                     <div class="image-icon-3 d-flex align-items-center justify-content-center">    
                                         <img src="<?php echo esc_url($icones_texto['icone_3']); ?>" alt="Icone 3" />
                                     </div>    
-                                    <div class="content texto-3 text-center">
+                                    <div id="text-icon-3" class="content texto-3 text-center">
                                         <b><?php echo esc_html($icones_texto['texto_3']); ?></b>
                                     </div>
                                 </div>
@@ -95,8 +95,8 @@ endif;
             endif;
             ?>
         </div>
-        <div class="col-md-6 text-center">
-            <img width="400" height="500" src="<?php the_post_thumbnail_url(); ?>">
+        <div class="col-md-6 image-about-us d-none d-sm-block">
+            <img class="rounded image-abt" width="400" height="500" src="<?php the_post_thumbnail_url(); ?>">
         </div>
     </div>
 </div>

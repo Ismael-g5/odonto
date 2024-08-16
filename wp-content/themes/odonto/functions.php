@@ -186,14 +186,16 @@ function pegandoTextosParaBanner()
         endwhile;
     endif;
 }
-/*function odonto_adicionando_scripts()
+    function odonto_adicionando_scripts()
 {
 
     $textosBanner = pegandoTextosParaBanner();
 
     if (is_front_page()) {
-       //
+        if (is_front_page()) {
+            wp_enqueue_script('texto-banner-js', get_template_directory_uri() . '/assets/js/default.js', array(), false, true);
+        }
     }
 }
 
-add_action('wp_enqueue_scripts', 'odonto_adicionando_scripts');*/
+add_action('wp_enqueue_scripts', 'odonto_adicionando_scripts');
