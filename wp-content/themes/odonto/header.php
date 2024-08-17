@@ -8,20 +8,17 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title><?php bloginfo('name'); ?></title>
     <?php wp_head(); ?>
+    
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-
+    
     <link rel="stylesheet" href="<?= get_template_directory_uri() . '/assets/css/global.css' ?>">
-
     <link rel="stylesheet" href="<?= get_template_directory_uri() . '/assets/css/normalize.css' ?>">
     <link rel="stylesheet" href="<?= get_template_directory_uri() . '/assets/css/bootstrap.css' ?>">
     <link rel="stylesheet" href="<?= get_template_directory_uri() . '/assets/css/header.css' ?>">
     <link rel="stylesheet" href="<?= get_template_directory_uri() . '/assets/css/' . $estiloPagina ?>">
     <link rel="stylesheet" href="<?= get_template_directory_uri() . '/assets/css/footer.css' ?>">
-
-
 </head>
 
 <body <?php body_class(); ?>>
@@ -29,7 +26,6 @@
         <div class="container-odonto">
             <div style="gap: 50px;">
                 <?php
-
                 $args = array(
                     'post_type' => 'cabecalho',
                     'post_status' => 'publish',
@@ -41,68 +37,43 @@
                 $query = new WP_Query($args);
 
                 if ($query->have_posts()): ?>
-                    <?php
-
-                    while ($query->have_posts()): $query->the_post();
-                    ?>
+                    <?php while ($query->have_posts()): $query->the_post(); ?>
                         <div class="itens-information" style="color: white; gap: 5px;">
                             <img class="icon-content" width="20" height="20" src="<?php the_post_thumbnail_url() ?>">
                             <div class="content-itens">
-                                <?php
-                                the_content();
-                                ?>
+                                <?php the_content(); ?>
                             </div>
                         </div>
-                <?php
-                    endwhile;
-                endif;
-                ?>
+                    <?php endwhile; ?>
+                <?php endif; ?>
             </div>
-            <?php
-            $urlTemplate =  esc_url(get_template_directory_uri());
-            ?>
+            <?php $urlTemplate = esc_url(get_template_directory_uri()); ?>
             <div class="icon-socials" style="gap: 20px;">
                 <div class="icon-whatsapp">
-                    <?php
-                    echo '<img  src="' . $urlTemplate . '/assets/images/icon-whz.png">';
-                    ?>
+                    <img src="<?php echo $urlTemplate; ?>/assets/images/icon-whz.png">
                 </div>
                 <div class="icon-instagram">
                     <a href="#">
-                        <?php
-                        echo '<img  src="' . $urlTemplate . '/assets/images/icon-instagram.png">';
-                        ?>
+                        <img src="<?php echo $urlTemplate; ?>/assets/images/icon-instagram.png">
                     </a>
                 </div>
                 <div class="icon-linkedIn">
                     <a href="#">
-                        <?php
-                        echo '<img  src="' . $urlTemplate . '/assets/images/icon-lkn.png">';
-                        ?>
+                        <img src="<?php echo $urlTemplate; ?>/assets/images/icon-lkn.png">
                     </a>
                 </div>
                 <div class="icon-facebook">
                     <a href="#">
-                        <?php
-                        echo '<img  src="' . $urlTemplate . '/assets/images/icon-facebook.png">';
-                        ?>
+                        <img src="<?php echo $urlTemplate; ?>/assets/images/icon-facebook.png">
                     </a>
                 </div>
             </div>
-            </nav>
         </div>
-
     </header>
-
-
-
-
 
     <header class="site-header-main">
         <div class="container-odonto">
-            <?php
-            the_custom_logo();
-            ?>
+            <?php the_custom_logo(); ?>
             <div class="menu-desktop d-none d-sm-block">
                 <nav class="menu-main" style="margin-left: -35%;">
                     <?php
@@ -126,12 +97,8 @@
                     </button>
                 </div>
             </nav>
-            </nav>
-
         </div>
-
     </header>
-
 
     <div class="collapse" id="navbarToggleExternalContent" data-bs-theme="light">
         <div class="bg-light p-4">
@@ -146,10 +113,13 @@
                     );
                     ?>
                 </div>
-              
             </div>
-
         </div>
     </div>
-    </div>
-    </div>
+
+   
+
+    <?php wp_footer(); ?>
+</body>
+
+</html>

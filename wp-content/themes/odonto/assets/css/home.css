@@ -74,3 +74,14 @@
 .card-servicos{
     width: 380px;
 }
+
+.slide-top{
+    height: 75vh;
+}
+
+@media only screen and (max-width: 767px) {
+    .slide-top{
+        height: 25vh;
+    } 
+}
+

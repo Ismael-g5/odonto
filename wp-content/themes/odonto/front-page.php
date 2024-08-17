@@ -1,31 +1,123 @@
 <?php
 $estiloPagina = 'home.css';
 require_once 'header.php';
-
-
-
-$args = array(
-    'post_type' => 'banners',
-    'post_status' => 'publish',
-    'posts_per_page' => 1
-);
-
-$query = new WP_Query($args);
-if ($query->have_posts()):
-    while ($query->have_posts()): $query->the_post();
 ?>
-        <main>
-            <div class="imagem-banner img-fluid">
-                <img class="img-banner-home" style="height: 80vh; width: 100%;" src="<?php the_post_thumbnail_url(); ?>">
-            </div>
-            <div class="texto-banner-dinamico">
-                <span id="texto-banner"></span>
-            </div>
-        </main>
-<?php
-    endwhile;
-endif;
-?>
+
+<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+    <ol class="carousel-indicators">
+        <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"></li>
+        <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"></li>
+        <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner slide-top">
+        <div class="carousel-item active">
+
+            <?php
+            $argsBanner = array(
+                'post_type' => 'banners',
+                'post_status' => 'publish',
+                'posts_per_page' => 1
+            );
+
+            $queryBanner = new WP_Query($argsBanner);
+
+
+            if ($queryBanner->have_posts()):
+                while ($queryBanner->have_posts()): $queryBanner->the_post();
+
+                    $imagem_banner_1 = get_field('imagem_banner_1');
+
+            ?>
+                    <img class="img-slide-1" src="<?php echo esc_url($imagem_banner_1); ?>" alt="First slide">
+            <?php
+
+                endwhile;
+            else :
+                // Código para quando nenhum post é encontrado
+                echo 'Nenhuma Imagem encontrada';
+            endif;
+
+            ?>
+
+        </div>
+
+            <!-- segundo slide -->
+        <div class="carousel-item">
+       
+            <?php
+            $argsBanner2 = array(
+                'post_type' => 'banners',
+                'post_status' => 'publish',
+                'posts_per_page' => 1
+            );
+
+            $queryBanner2 = new WP_Query($argsBanner2);
+
+
+            if ($queryBanner2->have_posts()):
+                while ($queryBanner2->have_posts()): $queryBanner2->the_post();
+
+                    $imagem_banner_2 = get_field('imagem_banner_2');
+
+            ?>
+                    <img class="image-slide-2" src="<?php echo esc_url($imagem_banner_2); ?>" alt="Second slide">
+            <?php
+
+                endwhile;
+            else :
+                // Código para quando nenhum post é encontrado
+                echo 'Nenhuma Imagem encontrada';
+            endif;
+
+            ?>
+       
+       
+        </div>
+
+
+
+        <!-- terceiro slide -->
+        <div class="carousel-item">
+
+            <?php
+            $argsBanner3 = array(
+                'post_type' => 'banners',
+                'post_status' => 'publish',
+                'posts_per_page' => 1
+            );
+
+            $queryBanner3 = new WP_Query($argsBanner3);
+
+
+            if ($queryBanner3->have_posts()):
+                while ($queryBanner3->have_posts()): $queryBanner3->the_post();
+
+                    $imagem_banner_3 = get_field('imagem_banner_3');
+
+            ?>
+                    <img class="image-slide-3" src="<?php echo esc_url($imagem_banner_3); ?>" alt="Third slide">
+            <?php
+
+                endwhile;
+            else :
+                // Código para quando nenhum post é encontrado
+                echo 'Nenhuma Imagem encontrada';
+            endif;
+
+            ?>
+
+        </div>
+    </div>
+    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </a>
+</div>
+
 <div class="container mt-5">
     <div class="row health-cpr">
         <div class="col-md-6 content-about-us">
@@ -52,7 +144,7 @@ endif;
                             <?php the_content(); ?>
                         </h2>
                     </article>
-                    <div class="about-desc">
+                    <div class="about-desc about-points d-flex align-items-center justify-content-center">
                         <?php echo esc_html($texto_block_2); ?>
                     </div>
                     <hr class="line-separation mt-5">
@@ -95,26 +187,22 @@ endif;
             endif;
             ?>
         </div>
-
         <div class="col-md-6 image-about-us d-none d-sm-block">
             <div class="img-second-block d-flex justify-content-center align-items-center" style="height: 70vh;">
                 <img class="rounded image-abt" width="400" src="<?php the_post_thumbnail_url(); ?>">
             </div>
         </div>
-
-
     </div>
-</div>
 </div>
 
 <section class="services front-service mt-5" id="front-service">
-
     <article class="center-title-con">
         <span class="center-title service">Nossos Serviços</span>
         <h2 class="center-heading serv">Serviços de atendimento integral para sua saúde</h2>
     </article>
+
     <?php
-    //inicio bloco serviços
+    // Bloco de serviços
     $args = array(
         'post_type' => 'servicos',
     );
@@ -127,11 +215,11 @@ endif;
 
             $servico_title = get_the_title();
             echo '<div class="col-md-3 card-servicos" data-servico="' . esc_attr($servico_title) . '">';
-            echo '<div  class="card card-service">';
+            echo '<div class="card card-service">';
 
             echo '<div class="card-icon">';
             $icones_card = get_field('icone_card');
-            echo '<img src="' . $icones_card . '">';
+            echo '<img src="' . esc_url($icones_card) . '">';
             echo '</div>';
 
             echo '<div class="card-title">';
@@ -140,12 +228,12 @@ endif;
 
             echo '<div class="card-desc">';
             $content = get_the_content(); // Pega o conteúdo completo
-            $trimmed_content = wp_trim_words($content, 15, '...'); // Limita a 20 palavras e adiciona '...' no final
-            echo '<p>' . $trimmed_content . '</p>';
+            $trimmed_content = wp_trim_words($content, 15, '...'); // Limita a 15 palavras e adiciona '...' no final
+            echo '<p>' . esc_html($trimmed_content) . '</p>';
             echo '</div>';
 
             $urlSM = get_field('linksaiba_mais');
-            echo '<a href="' . $urlSM . '" class=" btn__text front-service-btn">';
+            echo '<a href="' . esc_url($urlSM) . '" class=" btn__text front-service-btn">';
             echo 'Saiba Mais';
             echo '</a>';
 
@@ -156,11 +244,10 @@ endif;
         echo '</div>';
         echo '</main>';
     endif;
-    //fim bloco servicos
+    // Fim do bloco de serviços
     ?>
 </section>
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
     jQuery(document).ready(function($) {
         $('#pesquisar').click(function(e) {
@@ -168,7 +255,7 @@ endif;
 
             var selectedService = $('#servicos').val().toLowerCase();
 
-            $('.servicos').each(function() {
+            $('.card-servicos').each(function() {
                 var servicoTitle = $(this).data('servico').toLowerCase();
 
                 if (selectedService === "" || servicoTitle === selectedService) {
@@ -180,11 +267,6 @@ endif;
         });
     });
 </script>
-
-
-</div>
-
-
 
 <?php
 require_once 'footer.php';
