@@ -246,6 +246,12 @@ require_once 'header.php';
     endif;
     // Fim do bloco de serviços
     ?>
+
+    <!-- Adiciona o formulário do Contact Form 7 aqui -->
+    <div class="contact-form-section">
+        <?php echo do_shortcode('[contact-form-7 id="4dd9e4f" title="Contact form 1"]'); ?>
+    </div>
+    
 </section>
 
 <script>
