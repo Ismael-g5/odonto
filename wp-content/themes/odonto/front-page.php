@@ -247,12 +247,19 @@ require_once 'header.php';
     // Fim do bloco de serviços
     ?>
 
-    <!-- Adiciona o formulário do Contact Form 7 aqui -->
-    <div class="contact-form-section">
-        <?php echo do_shortcode('[contact-form-7 id="4dd9e4f" title="Contact form 1"]'); ?>
-    </div>
+  
     
 </section>
+
+  <!-- Adiciona o formulário do Contact Form 7 aqui -->
+  <div class="contact-form-section mt-5">
+  <article class="center-title-con contact-form">
+        <span class="center-title service form-service">Fale Conosco</span>
+        <h2 class="center-heading serv form-service-contact">Entre em contato e agende sua consulta</h2>
+    </article>
+
+        <?php echo do_shortcode('[contact-form-7 id="4dd9e4f" title="Contact form 1"]'); ?>
+    </div>
 
 <script>
     jQuery(document).ready(function($) {
