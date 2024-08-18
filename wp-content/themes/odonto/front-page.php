@@ -255,7 +255,7 @@ require_once 'header.php';
   <div class="contact-form-section mt-5">
   <article class="center-title-con contact-form">
         <span class="center-title service form-service">Fale Conosco</span>
-        <h2 class="center-heading serv form-service-contact">Entre em contato e agende sua consulta</h2>
+        <h2 class="center-heading serv form-service-contact text-center">Entre em contato e agende sua consulta</h2>
     </article>
 
         <?php echo do_shortcode('[contact-form-7 id="4dd9e4f" title="Contact form 1"]'); ?>
