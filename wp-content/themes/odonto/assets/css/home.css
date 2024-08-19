@@ -83,5 +83,20 @@
     .slide-top{
         height: 25vh;
     } 
+
+    #text-icon-1{
+        display: flex;
+        align-items: center;
+    }
+
+    #text-icon-2{
+        display: flex;
+        align-items: center;
+    }
+
+    #text-icon-3{
+        display: flex;
+        align-items: center;
+    }
 }
 

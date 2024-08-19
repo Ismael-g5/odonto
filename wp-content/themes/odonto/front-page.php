@@ -153,7 +153,7 @@ require_once 'header.php';
                         <?php
                         $icones_texto = get_field('icones_texto');
                         if ($icones_texto): ?>
-                            <div id="icones_texto_itens" class="row icones_itens">
+                            <div id="icones_texto_itens" class="row icones_itens icons-desktop d-none d-sm-block">
                                 <div id="content-icon-1" class="col-md-4 icon-text-1">
                                     <div class="image-icon-1 d-flex align-items-center justify-content-center">
                                         <img src="<?php echo esc_url($icones_texto['icone_1']); ?>" alt="Icone 1" />
@@ -176,6 +176,36 @@ require_once 'header.php';
                                         <img src="<?php echo esc_url($icones_texto['icone_3']); ?>" alt="Icone 3" />
                                     </div>
                                     <div id="text-icon-3" class="content texto-3 text-center">
+                                        <b><?php echo esc_html($icones_texto['texto_3']); ?></b>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        <!-- mobile -->
+                            <div id="icones_texto_itens" class="row icones_itens icons-mobile d-sm-none d-block">
+                                <div id="content-icon-1" class="col-md-4 icon-text-1 d-flex">
+                                    <div class="image-icon-1 d-flex align-items-center justify-content-center">
+                                        <img src="<?php echo esc_url($icones_texto['icone_1']); ?>" alt="Icone 1" />
+                                    </div>
+                                    <div id="text-icon-1" class="content texto-1 text-center" style="margin-left: 25px; margin-top: 10px;">
+                                        <b><?php echo esc_html($icones_texto['texto_1']); ?></b>
+                                    </div>
+                                </div>
+
+                                <div id="content-icon-2" class="col-md-4 icon-text-2 d-flex">
+                                    <div class="image-icon-2 d-flex align-items-center justify-content-center">
+                                        <img src="<?php echo esc_url($icones_texto['icone_2']); ?>" alt="Icone 2" />
+                                    </div>
+                                    <div id="text-icon-2" class="content texto-2 text-center" style="margin-left: 25px; margin-top: 10px;">
+                                        <b><?php echo esc_html($icones_texto['texto_2']); ?></b>
+                                    </div>
+                                </div>
+                                <div id="content-icon-3" class="col-md-4 icon-text-3 d-flex">
+                                    <div class="image-icon-3 d-flex align-items-center justify-content-center">
+                                        <img src="<?php echo esc_url($icones_texto['icone_3']); ?>" alt="Icone 3" />
+                                    </div>
+                                    <div id="text-icon-3" class="content texto-3 text-center" style="margin-left: 25px; margin-top: 10px;">
                                         <b><?php echo esc_html($icones_texto['texto_3']); ?></b>
                                     </div>
                                 </div>
@@ -258,7 +288,7 @@ require_once 'header.php';
         <h2 class="center-heading serv form-service-contact text-center">Entre em contato e agende sua consulta</h2>
     </article>
 
-        <?php echo do_shortcode('[contact-form-7 id="4dd9e4f" title="Contact form 1"]'); ?>
+        <?php echo do_shortcode('[contact-form-7 id="9f2a477" title="Formulário de contato 1"]'); ?>
     </div>
 
 <script>
