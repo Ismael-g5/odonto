@@ -288,7 +288,10 @@ require_once 'header.php';
         <h2 class="center-heading serv form-service-contact text-center">Entre em contato e agende sua consulta</h2>
     </article>
 
-        <?php echo do_shortcode('[contact-form-7 id="9f2a477" title="Formulário de contato 1"]'); ?>
+        <?php
+      // local -> [contact-form-7 id="4dd9e4f" title="Contact form 1"]
+        
+        echo do_shortcode('[formidable id=1]'); ?>
     </div>
 
 <script>
